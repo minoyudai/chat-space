@@ -38,14 +38,14 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
+|user|integer|null: false, foreign_key: true|
 |name|string|index: true, null:false, unique: true|
 |email|string|null: false|
 |password|integer|null: false, foreign_key: true|
 
 
 ### Association
-- has_many :group, through: :memebers
+- has_many :group, through: :members
 - has_many :messages
 - has_many :members
 
@@ -54,23 +54,22 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
 |name|string|index: true, null:false, unique: true|
 
 
 ### Association
-- has_many :users
+- has_many :users, through: :members
 - has_many :messages
 - has_many :members
 
 
-##massageテーブル
+## massageテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|name|string|index: true, null:false, unique: true|
-|text|text|info|
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
+|text|text|nul: false|
 
 ### Association
 - belongs_to :user
