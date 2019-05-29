@@ -38,14 +38,13 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user|integer|null: false, foreign_key: true|
 |name|string|index: true, null:false, unique: true|
 |email|string|null: false|
 |password|integer|null: false, foreign_key: true|
 
 
 ### Association
-- has_many :group, through: :members
+- has_many :groups, through: :members
 - has_many :messages
 - has_many :members
 
@@ -70,6 +69,8 @@ Things you may want to cover:
 |user|references|null: false, foreign_key: true|
 |group|references|null: false, foreign_key: true|
 |text|text|nul: false|
+|image|string|null: false|
+
 
 ### Association
 - belongs_to :user
