@@ -34,7 +34,7 @@ Things you may want to cover:
 - belongs_to :group
 - belongs_to :user
 
-## userテーブル
+## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -45,12 +45,12 @@ Things you may want to cover:
 
 
 ### Association
-- has_many :group
+- has_many :group, through: :memebers
 - has_many :messages
 - has_many :members
 
 
-## groupテーブル
+## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -61,6 +61,7 @@ Things you may want to cover:
 ### Association
 - has_many :users
 - has_many :messages
+- has_many :members
 
 
 ##massageテーブル
