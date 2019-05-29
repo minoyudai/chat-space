@@ -23,9 +23,18 @@ Things you may want to cover:
 
 * ...
 
+## membersテーブル
 
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
-## usersテーブル
+### Association
+- belongs_to :group
+- belongs_to :user
+
+## userテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -36,8 +45,9 @@ Things you may want to cover:
 
 
 ### Association
-- belongs_to :group
-- belongs_to :user
+- has_many :group
+- has_many :messages
+- has_many :members
 
 
 ## groupテーブル
@@ -49,8 +59,8 @@ Things you may want to cover:
 
 
 ### Association
-- belongs_to :user_id
-- belongs_to :name
+- has_many :users
+- has_many :messages
 
 
 ##massageテーブル
@@ -62,6 +72,6 @@ Things you may want to cover:
 |text|text|info|
 
 ### Association
-- belongs_to :user_id
-- belongs_to :name
+- belongs_to :user
+- belongs_to :group
    
