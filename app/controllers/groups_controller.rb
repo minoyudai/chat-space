@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :set_group, only: [:edit, :update]
+
   def new
     @group = Group.new
     @group.users << currrent_user
@@ -13,8 +15,21 @@ class GroupsController < ApplicationController
     end
   end
 
+  def update
+    if @group.update(group_paramas)
+      redirect_to group_messages_path(@group), notice: 'グループ編集しました'
+    else
+      render :edit
+    end
+  end
+
   private
+  
   def group_params
-    params.require(:group).permit(:name, { :user_ids => []})
+    params.require(:group).permit(:name, { :user_ids => [] })
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
   end
 end
