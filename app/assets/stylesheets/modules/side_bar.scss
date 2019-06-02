@@ -10,21 +10,27 @@
     height: 100px;
     background-color: $deepblue;
     padding: 0 20px;
+    line-height: 100px;
 
     &__name {
+      display: inline-block;
       font-size: $side_header;
       font-weight: bold;
-      line-height: 100px;
     }
 
-    &__icon {
+    &__lists {
+      display: inline-block;
       float: right;
-      a {
+      .list {
+        display: inline-block;
+      }
+      .icon {
         color: $white;
-        list-style: none;
+        font-size: 16px;
       }
     }
   }
+
 
   .groups {
     height: calc(100vh - 100px);
