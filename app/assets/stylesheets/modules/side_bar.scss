@@ -42,11 +42,13 @@
 
       &__name {
       font-size: $group_name;
+      color: $white;
       margin: 20px 0 5px;
       }
 
       &__message {
       font-size: $group_latest;
+      color: $white;
       margin-bottom: 40px;
       }
     }
