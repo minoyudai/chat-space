@@ -33,9 +33,10 @@
 
 
   .groups {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 140px);
     background-color: $sidelightblue;
     padding: 20px;
+    overflow: scroll;
     .group {
       box-sizing: border-box;
       padding: 20px 0 40px;

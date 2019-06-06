@@ -6,7 +6,8 @@
     .header
       .left-header
         .left-header__title
-          グループ名
+          - @group.group_users.each do |group_user|
+            = group_user.user.name
         %ul.left-header__members
           Member：
           - @group.group_users.each do |group_user|
