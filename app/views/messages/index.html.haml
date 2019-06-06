@@ -6,8 +6,7 @@
     .header
       .left-header
         .left-header__title
-          - @group.group_users.each do |group_user|
-            = group_user.user.name
+          = @group.name
         %ul.left-header__members
           Member：
           - @group.group_users.each do |group_user|
@@ -20,7 +19,7 @@
       = render @messages
     .form
       = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message', id: "new_message"
         .form__mask
           = f.label :image, class: 'form__mask__image' do
             = fa_icon 'picture-o', class: 'icon'
