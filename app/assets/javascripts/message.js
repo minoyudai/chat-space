@@ -51,10 +51,10 @@ $(document).on('turbolinks:load', function() {
       $('.form__submit').prop('disabled', false);
       $('.main').animate({scrollTop: $('.main')[0].scrollHeight}, 'fast');
     })
-      .fail(function(data){
-        alert('error');
-        $('.form__submit').prop('disabled', false);
-      })
+    .fail(function(){
+      alert('エラー');
+      $('.form__submit').prop('disabled', false);
+    })
     }) 
   })
 })
