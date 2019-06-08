@@ -27,11 +27,9 @@ $(document).on('turbolinks:load', function() {
   
   
   $('#new_message').on('submit', function(e){
-    // console.log("てすっと")
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
-    // console.log(this)
 
     $.ajax({
       url: url,
@@ -42,7 +40,6 @@ $(document).on('turbolinks:load', function() {
       contentType: false
     })
     .done(function(data){
-      // console.log(data)
       var html = buildHTML(data);
       console.log(data)
 
