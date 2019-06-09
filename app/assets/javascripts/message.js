@@ -66,9 +66,9 @@ $(document).on('turbolinks:load', function() {
        data: { id: message_id },
        dataType: 'json',
      })
-     .done(function(data) {
+     .done(function(new_messages) {
        var html;
-       data.forEach(function(message){
+       new_messages.forEach(function(message){
          html = buildHTML(message);
        });
        $('.chat-messages').append(html);
