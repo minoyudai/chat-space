@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function() {
-  $(function(){
     function buildHTML(message){
       var MessageImage = ``
       if (message.image){
@@ -24,8 +23,8 @@ $(document).on('turbolinks:load', function() {
   
       return html;
    }
-  
-  
+
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -40,42 +39,45 @@ $(document).on('turbolinks:load', function() {
       contentType: false
     })
     .done(function(data){
-      var html = buildHTML(data);
-      console.log(data)
-
+      var html = buildHTML(data)
       $('.main').append(html);
       $('#new_message')[0].reset();
       $('.form__submit').prop('disabled', false);
       $('.main').animate({scrollTop: $('.main')[0].scrollHeight}, 'fast');
     })
     .fail(function(){
-      alert('エラー');
+      alert('error');
       $('.form__submit').prop('disabled', false);
     })
-    }) 
-  })
-
+  }) 
+  
   $(function(){
-    setInterval(reloadMessages, 5000);
+
+
+  var reloadMessages = function () {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      var last_message_id = $('.message:last').data("message-id"); 
+      // console.log(last_message_id);
+      $.ajax({ 
+        url: "api/messages", 
+        type: 'get',
+        dataType: 'json', 
+        data: {last_id: last_message_id}
+      })
+      .done(function (messages) { 
+      // console.log(messages)
+        var insertHTML = '';
+        messages.forEach(function (message) {
+          insertHTML = buildHTML(message); 
+          $('.main').append(insertHTML);
+          $('.main').animate({scrollTop: $('.main')[0].scrollHeight}, 'fast');          
+      })
+    })
+      .fail(function () {
+        alert('自動更新に失敗しました');
+      });
+    }
+  };
+  setInterval(reloadMessages, 5000);
   });
-  function reloadMessages(){
-    var message_id = $('.chat-message:last').data('message-id');
-     $.ajax({
-       url: location.href,
-       type: 'GET',
-       data: { id: message_id },
-       dataType: 'json',
-     })
-     .done(function(new_messages) {
-       var html;
-       new_messages.forEach(function(message){
-         html = buildHTML(message);
-       });
-       $('.chat-messages').append(html);
-       scrollTop();
-     })
-     .fail(function(){
-      console.log('error');
-     });
-    };
 });

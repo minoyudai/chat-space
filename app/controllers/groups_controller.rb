@@ -19,10 +19,11 @@ class GroupsController < ApplicationController
   end
   
   def edit
+    
   end
 
   def update
-    if @group.update(group_paramas)
+    if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: 'グループ編集しました'
     else
       render :edit
