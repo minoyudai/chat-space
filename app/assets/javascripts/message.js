@@ -39,16 +39,30 @@ $(document).on('turbolinks:load', function() {
     })
 
     // if 文の追記
-    // if (not == null)
     .done(function(data){ 
+      console.log(data)
+      if (data.length==0 ){
+        console.log('null')
+
+         alert('error');
+
+      } else {
+        console.log('fff')
+
       var html = buildHTML(data)
       $('.main').append(html);
+      
+      }
+
+
       $('#new_message')[0].reset();
       $('.form__submit').prop('disabled', false);
       $('.main').animate({scrollTop: $('.main')[0].scrollHeight}, 'fast');
+
     })
+     
     .fail(function(){
-      alert('error');
+      alert('error!!!!!!!');
       $('.form__submit').prop('disabled', false);
     })
   }) 
@@ -79,6 +93,6 @@ $(document).on('turbolinks:load', function() {
       });
     }
   };
-  setInterval(reloadMessages, 5000);
+  setInterval(reloadMessages, 10000);
   });
 });
