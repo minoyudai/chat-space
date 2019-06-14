@@ -40,6 +40,8 @@ $(function() {
         url: '/users',
         data: { keyword: input },
         dataType: 'json'
+        // data: {last_id: last_message_id}
+
       })
   
       .done(function(users) {
