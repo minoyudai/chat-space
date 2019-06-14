@@ -39,6 +39,7 @@ $(document).on('turbolinks:load', function() {
     })
 
     // if 文の追記
+    // if (not == null)
     .done(function(data){ 
       var html = buildHTML(data)
       $('.main').append(html);
@@ -52,9 +53,8 @@ $(document).on('turbolinks:load', function() {
     })
   }) 
   
+
   $(function(){
-
-
   var reloadMessages = function () {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
       var last_message_id = $('.message:last').data("message-id"); 
