@@ -2,8 +2,8 @@ $(document).on('turbolinks:load', function() {
 $(function() {
 
   var search_list = $("#user-search-result");
-  var member_list = $(".chat-group-user__name");
-  
+  var member_list = $(".chat-group-form__field--right_new");
+  // class
   function appendUser(users) {
      var html = 
       `<div class="chat-group-user clearfix">
@@ -67,12 +67,13 @@ $(function() {
       $(this).parent().remove();
       appendMember(name, user_id);
     });
-  
+  });
+});
+
     $(document).on("click", '.user-search-remove', function() {
         $(this).parent().remove();
           });
-    });
-  });
+    
   });
   });
 })

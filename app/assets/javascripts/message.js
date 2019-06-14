@@ -37,7 +37,9 @@ $(document).on('turbolinks:load', function() {
       processData: false,
       contentType: false
     })
-    .done(function(data){
+
+    // if 文の追記
+    .done(function(data){ 
       var html = buildHTML(data)
       $('.main').append(html);
       $('#new_message')[0].reset();
