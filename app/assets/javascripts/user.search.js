@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function() {
 $(function() {
 
   var search_list = $("#user-search-result");
-  var member_list = $(".chat-group-form__field--right_new");
+  var member_list = $("#chat-group-users");
   // class
   function appendUser(users) {
      var html = 
